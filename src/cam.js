@@ -5,7 +5,7 @@ import {useState, useCallback, useRef} from 'react';
 import { VisibilityOff } from '@material-ui/icons';
 import Button from "@material-ui/core/Button";
 
-const WebcamStreamCapture = ({userId}) => {
+const WebcamStreamCapture = ({ userId }) => {
     const webcamRef = React.useRef(null);
     const mediaRecorderRef = React.useRef(null);
     const [capturing, setCapturing] = React.useState(false);
@@ -47,23 +47,14 @@ const WebcamStreamCapture = ({userId}) => {
         });
 
         const fd = new FormData();
-        fd.append('userRecordedVideoCV', blob, 'userVideoCV.webm');
         fd.append('userId', userId);
+        fd.append('userRecordedVideoCV', blob, 'userVideoCV.webm');
 
         fetch('http://localhost:3000/api/test',
         {
           method: 'post',
           body: fd
         });
-        // const url = URL.createObjectURL(blob);
-        // const a = document.createElement("a");
-        // document.body.appendChild(a);
-        // a.style = "display: none";
-        // a.href = url;
-        // a.download = "react-webcam-stream-capture.webm";
-        // a.click();
-        // window.URL.revokeObjectURL(url);
-        // setRecordedChunks([]);
       }
     }, [recordedChunks]);
   
