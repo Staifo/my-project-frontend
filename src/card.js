@@ -100,7 +100,7 @@ function OneCard({
           flex: "1",
         }}
       >
-        <CardMedia className={classes.media} image={data.profile_pic} />
+        <CardMedia className={classes.media} image={`http://localhost:3000/documents/${data.profile_pic}`} />
 
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -192,7 +192,7 @@ function OneCard({
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Method:</Typography>
-            <Typography paragraph> <a href={profile_pic}><TwitterIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color = 'primary'/></a></Typography>
+            <Typography paragraph><TwitterIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color = 'primary'/></Typography>
             <Typography paragraph><FacebookIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></Typography>
             <Typography paragraph><LinkedInIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></Typography>
             <Typography paragraph><GitHubIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}}/></Typography>

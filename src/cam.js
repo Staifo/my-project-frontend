@@ -5,7 +5,7 @@ import {useState, useCallback, useRef} from 'react';
 import { VisibilityOff } from '@material-ui/icons';
 import Button from "@material-ui/core/Button";
 
-const WebcamStreamCapture = ({ userId }) => {
+const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
     const webcamRef = React.useRef(null);
     const mediaRecorderRef = React.useRef(null);
     const [capturing, setCapturing] = React.useState(false);
@@ -54,7 +54,10 @@ const WebcamStreamCapture = ({ userId }) => {
         {
           method: 'post',
           body: fd
-        });
+        })
+        .then(res => res.json())
+        .then(data => setVideoUploaded(true))
+        .catch(e => console.error(e.message))
       }
     }, [recordedChunks]);
   
