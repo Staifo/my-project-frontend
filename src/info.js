@@ -243,7 +243,7 @@ const Info = () => {
                 <div>
                   <CV />
                 </div>
-                <Button
+                {/* <Button
                   // type="submit"
                   variant="contained"
                   color="primary"
@@ -251,7 +251,7 @@ const Info = () => {
                   onClick={handleOnClick}
                 >
                   Send Data
-                </Button>
+                </Button> */}
               </div>
              
              
@@ -267,8 +267,8 @@ const Info = () => {
               >
                 <div style={{ display: "flex", width: "100%", height: "100%" }}>
                   <div style={{ width: "46%", height: "100%" }}>
-                    <div style={{ height: "47px", textAlign: "center" }}>
-                      Coding Skills
+                    <div style={{ height: "80px", textAlign: "center" }}>
+                      Coding Skills and Coding Related Skills
                     </div>
                     <TextareaAutosize
                       aria-label="minimum height"
@@ -278,7 +278,7 @@ const Info = () => {
                       name="coding_skills"
                     />
                     <br />
-                    <AnimatedMulti />
+                    {/* <AnimatedMulti /> */}
                   </div>
                   <br />
                   <div
@@ -288,10 +288,10 @@ const Info = () => {
                       style={{
                         width: "100%",
                         textAlign: "center",
-                        height: "47px",
+                        height: "80px",
                       }}
                     >
-                      Transferrable Skills and other Soft & Hard Skills
+                      Transferrable Skills and other Soft & Hard Skills (Scale 1(bad) -10(very good)) or write a short text
                     </div>
                     <TextareaAutosize
                       aria-label="minimum height"
@@ -299,16 +299,26 @@ const Info = () => {
                       placeholder="Your skills here..."
                       style={{ width: "100%", height: "80%" }}
                       name="transfer_skills"
+                      placeholder = 'Your skills or pitch here: for example: Communicational Skills: 10, Adaptability: 10 ...'
                     />
                     <br />
-                    <AnimatedMultiSkills />
+                    {/* <AnimatedMultiSkills /> */}
                   </div>
                 </div>
-                <Button
+                {/* <Button
                   type="submit"
                   variant="contained"
                   color="primary"
                   style={{ marginTop: "4%", width: "100%" }}
+                  onClick={handleOnClick}
+                >
+                  Send Data
+                </Button> */}
+                <Button
+                  // type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{ marginRight: "2%", marginTop: "4%", width: "100%" }}
                   onClick={handleOnClick}
                 >
                   Send Data

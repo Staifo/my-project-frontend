@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div style={{width:'100%', height: '100px', backgroundColor: 'lightgrey'}}>
+        <div style={{width:'100%', height: '100px', backgroundColor: 'lightgrey', marginTop: '1%'}}>
             This will be the footer
             This will be the footer
             This will be the footer

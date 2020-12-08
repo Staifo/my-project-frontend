@@ -73,7 +73,7 @@ function OneCard({
     job_title,
     first_name,
     last_name,
-    date_of_birth,
+    
     dob,
     city,
     last_updated,
@@ -107,14 +107,14 @@ function OneCard({
             <table style={{ textAlign: "left", marginBottom: "2%" }}>
               <thead>
                 <tr>
-                  <th>{first_name}</th>
-                  <th>{last_name}</th>
+                  <th style={{fontSize: '16px', color: ''}}>{first_name}</th>
+                  <th style={{fontSize: '16px', color: ''}}>{last_name}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style={{}}>
-                  <td style={{}}>Job title:</td>
-                  <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
+                  <td style={{fontSize: '16px', fontWeight: 'bold'}}>Job title:</td>
+                  <td style={{ textAlign: "left", whiteSpace: "nowrap", fontWeight: 'bold', fontSize: '16px' }}>
                     {job_title}
                   </td>
                 </tr>
@@ -130,30 +130,42 @@ function OneCard({
                     {city}
                   </td>
                 </tr>
+                </tbody>
+            </table>
+            <table>
+            <thead>
                 <tr style={{}}>
-                  <td style={{}}>Coding_Skills:</td>
-                  <td style={{ textAlign: "left", wordBreak: 'break-all'}}>
+                  <th colspan = '2' style={{fontSize: '16px'}}>Coding Skills</th>
+                  <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr colspan = '2' style={{textAlign: 'center'}}>
+                  <td colspan = '2' style={{ textAlign: "center", wordBreak: 'break-all', fontWeight: 'bold'}}>
                   {coding_skills}
                   </td>
-                </tr>
+                  </tr>
+                  <br/>
                 <tr style={{}}>
-                  <td style={{ whiteSpace: "nowrap" }}>Last update:</td>
+                  <td style={{ whiteSpace: "nowrap", textAlign: 'left' }}>Last update:</td>
                   <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
                     {last_updated}
                   </td>
                 </tr>
-              </tbody>
-            </table>
+                </tbody>
+                </table>
             <Button
               variant="contained"
               color="primary"
-              style={{ marginRight: "10%" }}
-              onClick={() => onChooseVideo(data.video)}
+              style={{ marginRight: "10%", marginTop: '2%' }}
+              onClick={(e) => {onChooseVideo(data.video);
+              e.preventDefault();
+              }}
             >
               Play Video
             </Button>
-            <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none" }}>
-              <Button variant="contained" color="primary">
+            <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none", }}>
+              <Button variant="contained" color="primary" style={{marginTop: '2%'}}>
                 More Info
               </Button>
             </Link>

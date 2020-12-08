@@ -109,14 +109,14 @@ function NewCard({
               <table style={{ textAlign: "left", marginBottom: "2%" }}>
                 <thead>
                   <tr>
-                    <th>{first_name}</th>
-                    <th>{last_name}</th>
+                    <th style={{fontSize: '20px', color: ''}}>{first_name}</th>
+                    <th style={{fontSize: '20px', color: ''}}>{last_name}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{}}>
-                    <td style={{}}>Job title:</td>
-                    <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
+                    <td style={{fontSize: '20px', fontWeight: 'bold' }}>Job title:</td>
+                    <td style={{ textAlign: "left", whiteSpace: "nowrap", fontSize: '20px', fontWeight: 'bold' }}>
                       {job_title}
                     </td>
                   </tr>
@@ -145,15 +145,15 @@ function NewCard({
                 color="primary"
                 style={{ marginRight: "10%" }}
                 onClick={() => {onChooseVideo(video);
-                  handleExpandClick()
+                  // handleExpandClick()
                 }}
                
               >
                 Play Video
               </Button>
-              <Button variant="contained" color="primary">
+              {/* <Button variant="contained" color="primary">
                 More Info
-              </Button>
+              </Button> */}
               
             </Typography>
           </CardContent>
@@ -177,7 +177,7 @@ function NewCard({
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              { userCard && <Video url={chosenVideo}/>}
+              {/* { userCard && <Video url={chosenVideo}/>} */}
               
             </CardContent>
           </Collapse>

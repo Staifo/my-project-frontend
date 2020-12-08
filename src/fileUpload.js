@@ -1,6 +1,19 @@
 import React from "react";
 
 const FileUpload = () => {
+
+  // const fd = new FormData();
+  // fd.append('userId', userId);
+  // fd.append('userRecordedVideoCV', blob, 'userVideoCV.webm');
+
+  // fetch('http://localhost:3000/api/test',
+  // {
+  //   method: 'post',
+  //   body: fd
+  // });
+
+
+
   return (
     <div style={{display: 'flex'}}>
       <form

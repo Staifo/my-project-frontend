@@ -11,6 +11,7 @@ import MyPersonalSpace from "./myPersonalSpace";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WebcamStreamCapture from "./cam";
 import { useRef } from "react";
+import { Scrollbar } from "react-scrollbars-custom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -38,6 +39,7 @@ import PersonalSpaceUseEffect from "./personalSpaceCardUseEffect";
 import Login from "./login";
 import Info from "./info";
 import NewCard from "./newCard";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -111,9 +113,16 @@ const handleClick =(e) => {
           <Route exact path="/">
           <div style={{display: 'flex', flexDirection: 'column', position: 'sticky', top: '0'}}>
             {datas && <Video url={chosenVideo}/>}
-          <div>
-            {createCard && <MyPersonalSpace/>}
-          </div>
+          {/* <div style={{width: '100%', height: '100%'}}> */}
+       
+          {/* <TextareaAutosize
+      rowsMax={100}
+      aria-label="maximum height"
+      placeholder=""
+      defaultValue=""
+      style={{width: '100%', height: '100%', marginTop: '2%'}}
+    /> */}
+          {/* </div> */}
             </div>
 
             {datas && (
@@ -139,7 +148,7 @@ const handleClick =(e) => {
                 
               }}
             >
-            
+            <div style={{width: '100%'}}>
               <MyPersonalSpace
                 datas={datas}
                 onChooseVideo={setChosenVideo}
@@ -147,7 +156,9 @@ const handleClick =(e) => {
                handleClick={handleClick}
                
               />
+            
               {datas && <Video url={chosenVideo} className="video1" />}
+              </div>
               </div>
             
             <PersonalSpaceUseEffect datas={datas} />

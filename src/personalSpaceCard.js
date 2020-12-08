@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import FileUpload from './fileUpload'
+import FileUpload from './fileUpload';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,21 +44,27 @@ const {
     >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{ wordBreak: "break-all" }}>
-            <span style={{fontWeight: 'bold', fontSize: '20px'}}>Coding Skills & Coding Related Skills</span>
-            <div>
+          <Paper className={classes.paper} style={{ wordBreak: "break-all", height: '400px' }}>
+            <Paper><span style={{fontWeight: 'bold', fontSize: '20px'}}>Coding Skills & Coding Related Skills</span></Paper>
+            <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', marginTop: '2%'}}>
               <table>
-                <tr>
-                  <td></td>
-                  <td>{coding_skills}</td>
+                <tr style={{}}>
+                  <td style={{}}>{coding_skills}</td>
                 </tr>
               </table>
             </div>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{ wordBreak: "break-all" }}>
-           <span style={{fontWeight: 'bold', fontSize: '20px'}}>Transferrable Skills and other Hard & Soft Skills</span>
+          <Paper className={classes.paper} style={{ wordBreak: "break-all", height: '400px' }}>
+         <Paper><span style={{fontWeight: 'bold', fontSize: '20px'}}>Transferrable Skills and other Hard & Soft Skills</span></Paper>
+           <div style={{marginTop: '2%'}}>
+              <table>
+                <tr>
+                  <td>{transfer_skills}</td>
+                </tr>
+              </table>
+            </div>
           </Paper>
         </Grid>
         <Grid item xs={12}>
