@@ -88,6 +88,10 @@ function OneCard({
 
   console.log(data)
 
+//   import { eoLocale } from 'date-fns/locale/eo'
+// var result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+//   locale: eoLocale
+
 
  
 
@@ -120,7 +124,7 @@ function OneCard({
                   </td>
                 </tr>
                 <tr style={{}}>
-                  <td style={{ whiteSpace: "nowrap" }}>Dob:</td>
+                  <td style={{ whiteSpace: "nowrap" }}>DOB:</td>
                   <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
                     {dob}
                   </td>
@@ -188,11 +192,11 @@ function OneCard({
             aria-label="show more"
           >
             <ExpandMoreIcon />
+            <span style={{fontSize: '10px'}}>click here for important links</span>
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
             <Typography paragraph><TwitterIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color = 'primary'/></Typography>
             <Typography paragraph><FacebookIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></Typography>
             <Typography paragraph><a href= {linkedin_url}><LinkedInIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></a></Typography>
