@@ -73,7 +73,6 @@ function OneCard({
     job_title,
     first_name,
     last_name,
-    
     dob,
     city,
     last_updated,
@@ -82,7 +81,9 @@ function OneCard({
     _id,
     coding_skills,
     transfer_skills,
-    profile_pic
+    profile_pic,
+    linkedin_url,
+    github_url
   } = data;
 
   console.log(data)
@@ -104,7 +105,7 @@ function OneCard({
 
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            <table style={{ textAlign: "left", marginBottom: "2%" }}>
+            <table style={{ textAlign: "left", marginBottom: "2%", width: '100%'  }}>
               <thead>
                 <tr>
                   <th style={{fontSize: '16px', color: ''}}>{first_name}</th>
@@ -113,8 +114,8 @@ function OneCard({
               </thead>
               <tbody>
                 <tr style={{}}>
-                  <td style={{fontSize: '16px', fontWeight: 'bold'}}>Job title:</td>
-                  <td style={{ textAlign: "left", whiteSpace: "nowrap", fontWeight: 'bold', fontSize: '16px' }}>
+                  <td style={{fontSize: '14px', fontWeight: 'bold'}}>Job title:</td>
+                  <td style={{ textAlign: "left", whiteSpace: "nowrap", fontWeight: 'bold', fontSize: '14px' }}>
                     {job_title}
                   </td>
                 </tr>
@@ -135,7 +136,7 @@ function OneCard({
             <table>
             <thead>
                 <tr style={{}}>
-                  <th colspan = '2' style={{fontSize: '16px'}}>Coding Skills</th>
+                  {/* <th colspan = '2' style={{fontSize: '14px'}}>Coding Skills</th> */}
                   <th></th>
                   </tr>
                   </thead>
@@ -147,9 +148,9 @@ function OneCard({
                   </tr>
                   <br/>
                 <tr style={{}}>
-                  <td style={{ whiteSpace: "nowrap", textAlign: 'left' }}>Last update:</td>
+                  {/* <td style={{ whiteSpace: "nowrap", textAlign: 'left' }}>Last update:</td> */}
                   <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
-                    {last_updated}
+                    {/* {last_updated} */}
                   </td>
                 </tr>
                 </tbody>
@@ -194,8 +195,8 @@ function OneCard({
             <Typography paragraph>Method:</Typography>
             <Typography paragraph><TwitterIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color = 'primary'/></Typography>
             <Typography paragraph><FacebookIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></Typography>
-            <Typography paragraph><LinkedInIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></Typography>
-            <Typography paragraph><GitHubIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}}/></Typography>
+            <Typography paragraph><a href= {linkedin_url}><LinkedInIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}} color='primary'/></a></Typography>
+            <Typography paragraph><a href= {github_url}><GitHubIcon style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}}/></a></Typography>
           </CardContent>
         </Collapse>
       </Card>

@@ -20,10 +20,17 @@ import { Grid } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import ReactPlayer from 'react-player';
-import Video from './video';
-import PersonalSpaceCard from './personalSpaceCard'
-
+import ReactPlayer from "react-player";
+import Video from "./video";
+import PersonalSpaceCard from "./personalSpaceCard";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import HomeIcon from "@material-ui/icons/Home";
+import MobileFriendlyIcon from "@material-ui/icons/MobileFriendly";
+import LocationCityIcon from "@material-ui/icons/LocationCity";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,9 +68,7 @@ function NewCard({
   otherVideo,
   onOtherVideo,
   setOtherVideo,
- handleClick
-
-
+  handleClick,
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -72,7 +77,6 @@ function NewCard({
     setExpanded(!expanded);
   };
 
- 
   const {
     job_title,
     first_name,
@@ -83,40 +87,59 @@ function NewCard({
     last_updated,
     video_url,
     video,
-    profile_pic
+    profile_pic,
+    street,
+    postal_code,
+    country,
+    email,
+    linkedin_url,
+    github_url
   } = userCard;
 
-
-
-
   return (
-    
-    <div class="col-sm-4" className="cardSpace" style={{display: 'flex', width: '100%'}}>
-      <div style={{width: '98%'}}>
+    <div
+      class="col-sm-4"
+      className="cardSpace"
+      style={{ display: "flex", width: "100%" }}
+    >
+      <div style={{ width: "98%" }}>
         <Card
           className={classes.root}
           id="card"
           style={{
             marginLeft: "",
             flex: "1",
-          
           }}
         >
-          <CardMedia className={classes.media} image={userCard.profile_pic} />
+          <CardMedia
+            className={classes.media}
+            image={`http://localhost:3000/documents/${userCard.profile_pic}`}
+          />
 
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
               <table style={{ textAlign: "left", marginBottom: "2%" }}>
                 <thead>
                   <tr>
-                    <th style={{fontSize: '20px', color: ''}}>{first_name}</th>
-                    <th style={{fontSize: '20px', color: ''}}>{last_name}</th>
+                    <th style={{ fontSize: "20px", color: "" }}>
+                      {first_name}
+                    </th>
+                    <th style={{ fontSize: "20px", color: "" }}>{last_name}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{}}>
-                    <td style={{fontSize: '20px', fontWeight: 'bold' }}>Job title:</td>
-                    <td style={{ textAlign: "left", whiteSpace: "nowrap", fontSize: '20px', fontWeight: 'bold' }}>
+                    <td style={{ fontSize: "20px", fontWeight: "bold" }}>
+                      Job title:
+                    </td>
+                    <td
+                      style={{
+                        textAlign: "left",
+                        whiteSpace: "nowrap",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                      }}
+                    >
                       {job_title}
                     </td>
                   </tr>
@@ -143,23 +166,65 @@ function NewCard({
               <Button
                 variant="contained"
                 color="primary"
-                style={{ marginRight: "10%" }}
-                onClick={() => {onChooseVideo(video);
+                style={{ marginRight: "40%" }}
+                onClick={() => {
+                  onChooseVideo(video);
                   // handleExpandClick()
                 }}
-               
               >
                 Play Video
               </Button>
-              {/* <Button variant="contained" color="primary">
+              <Button
+                onClick={handleExpandClick}
+                variant="contained"
+                color="primary"
+              >
                 More Info
-              </Button> */}
-              
+              </Button>
+              <Typography paragraph>
+                <TwitterIcon
+                  style={{
+                    marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                  }}
+                  color="primary"
+                />
+              </Typography>
+              <Typography paragraph>
+                <FacebookIcon
+                  style={{
+                    marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                  }}
+                  color="primary"
+                />
+              </Typography>
+              <Typography paragraph>
+                <a href= {linkedin_url}><LinkedInIcon
+                  style={{
+                    marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                  }}
+                  color="primary"
+                /></a>
+              </Typography>
+              <Typography paragraph>
+                <a href = {github_url}><GitHubIcon
+                  style={{
+                    marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                  }}
+                /></a>
+              </Typography>
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
-              <FavoriteIcon onClick={handleClick}/>
+              <FavoriteIcon onClick={handleClick} />
             </IconButton>
             <IconButton aria-label="share">
               <ShareIcon />
@@ -178,17 +243,64 @@ function NewCard({
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               {/* { userCard && <Video url={chosenVideo}/>} */}
-              
+              <Typography>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <table style={{ textAlign: "left" }}>
+                    <thead>
+                      <tr>
+                        <th style={{ width: "40px" }}></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr rowspan="4">
+                        <td>
+                          <HomeIcon color="primary" />
+                        </td>
+                        <td>{street}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                        </td>
+                        <td>{city}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>{postal_code}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td style={{paddingBottom: '20px'}}>{country}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <MobileFriendlyIcon color="primary" />
+                        </td>
+                        <td>0158 / 20 20 20 20</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <MailOutlineIcon color="primary" />
+                        </td>
+                        <td>{email}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Typography>
             </CardContent>
           </Collapse>
           {/* <div style= {{height: '20em', border: '1px solid black'}}></div> */}
         </Card>
-        
       </div>
       {/* <div style={{ border: "4px solid yellow", height: "100%", width: '60%' }}></div> */}
     </div>
-    
-    
 
     // {/* <div
     //   style={{ display: "flex", width: "600px", border: "1px solid black",}}

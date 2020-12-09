@@ -10,7 +10,7 @@ import AnimatedMulti from "./searchCode";
 import AnimatedMultiSkills from "./searchSkills";
 import WebcamStreamCapture from "./cam";
 import FileUpload from "./fileUpload";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,22 +24,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Info = () => {
-  const history = useHistory()
+  const history = useHistory();
   const classes = useStyles();
   const [camDis, setCamDis] = useState(null);
   const [userCreated, setUserCreated] = useState(false);
   const [createCard, setCreateCard] = useState(null);
-  const [videoUploaded, setVideoUploaded] = useState(false)
+  const [videoUploaded, setVideoUploaded] = useState(false);
   const [fileUploaded, setFileUploaded] = useState({
     profile_pic: false,
-    CV: false
-  })
+    CV: false,
+  });
 
   useEffect(() => {
     if (fileUploaded.profile_pic && fileUploaded.CV) {
-      history.push(`/singleUser/${userCreated._id}`)
+      history.push(`/singleUser/${userCreated._id}`);
     }
-  }, [fileUploaded])
+  }, [fileUploaded]);
 
   const camOn = useRef(null);
   const play = useRef(null);
@@ -103,7 +103,7 @@ const Info = () => {
                     display: "flex",
                     flexDirection: "column",
                     marginLeft: "2%",
-                    width: "40%",
+                    width: "30%",
                   }}
                 >
                   <div>Job title</div>
@@ -163,7 +163,7 @@ const Info = () => {
                 <div
                   style={{
                     marginRight: "2%",
-                    width: "38%",
+                    width: "50%",
                     marginLeft: "4%",
                     display: "flex",
                     flexDirection: "column",
@@ -179,7 +179,7 @@ const Info = () => {
                       <TextareaAutosize
                         aria-label="minimum height"
                         rowsMin={16}
-                        placeholder="Your skills here..."
+                        placeholder="Your skills here...please use ' | ' to seperate instead of ' , '"
                         style={{ width: "100%", height: "80%" }}
                         name="coding_skills"
                       />
@@ -201,8 +201,8 @@ const Info = () => {
                           height: "80px",
                         }}
                       >
-                        Transferrable Skills and other Soft & Hard Skills (Scale
-                        1(bad) -10(very good)) or write a short text
+                        Transferrable Skills and other Soft & Hard Skills <br />
+                        (Scale 1(bad) -10(very good)) or write a short text
                       </div>
                       <TextareaAutosize
                         aria-label="minimum height"
@@ -210,7 +210,7 @@ const Info = () => {
                         placeholder="Your skills here..."
                         style={{ width: "100%", height: "80%" }}
                         name="transfer_skills"
-                        placeholder="Your skills or pitch here: for example: Communicational Skills: 10, Adaptability: 10 ..."
+                        placeholder="Your skills or pitch here: Communicational Skills: 10 | Adaptability: 10 ... please use ' | ' to seperate instead of ' , '"
                       />
                       <br />
                       {/* <AnimatedMultiSkills /> */}
@@ -304,17 +304,29 @@ const Info = () => {
             </Grid>
           )}
           {userCreated && videoUploaded && (
-            <>
-            <div>Upload Profile Pic</div>
-                <div>
-                  <FileUpload userCreated={userCreated} type="profile_pic" setFileUploaded={setFileUploaded}/>
-                </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{marginTop: '2%'}}>
 
-                <div>Upload CV</div>
-                <div>
-                <FileUpload userCreated={userCreated} type="CV" setFileUploaded={setFileUploaded}/>
+              <div>Upload Profile Pic</div>
+              <div>
+                <FileUpload
+                  userCreated={userCreated}
+                  type="profile_pic"
+                  setFileUploaded={setFileUploaded}
+                />
+              </div>
+<br/>
+              <div>Upload CV</div>
+              <div>
+                <FileUpload
+                  userCreated={userCreated}
+                  type="CV"
+                  setFileUploaded={setFileUploaded}
+                />
                 </div>
-            </>
+              </div>
+              </div>
+            
           )}
         </Grid>
       </Grid>

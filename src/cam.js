@@ -62,7 +62,7 @@ const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
     }, [recordedChunks]);
   
     return (
-      <form style={{display: 'flex', justifyContent: 'center'}}>
+      <form style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
         <Webcam audio={true} ref={webcamRef} name='video'/>
         {capturing ? (
           <Button color = 'primary' onClick={handleStopCaptureClick}>Stop Capture</Button>

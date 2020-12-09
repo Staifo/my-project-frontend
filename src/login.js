@@ -3,15 +3,19 @@ import SpringCard from "./spring";
 import BusinessIcon from "@material-ui/icons/Business";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import logo1 from "./images/logo1.jpg";
 
 const Login = () => {
   return (
     <div
+      className="loginLogo"
       style={{
         display: "flex",
         flexDirection: "column",
         height: "100%",
         width: "100%",
+        backgroundColor: "#D9D9D9",
+        marginTop: "1%",
       }}
     >
       {/* <div className ='spring' style={{display: 'flex', width: '100%', height: '40%'}}>
@@ -32,6 +36,7 @@ const Login = () => {
           <span className="nice">Coder</span>
         </div>
         {/* <div style={{display: 'flex', width: '100%', border: '2px solid green', width: 'min-content' , position: 'relative', left: '60%'}}> */}
+        {/* <div style={{width: '200px', position: 'absolute', left: '24%', bottom:'30%',}}><img src={logo1} width = '600px'/></div> */}
         <div
           style={{
             display: "flex",
@@ -39,6 +44,7 @@ const Login = () => {
             width: "min-content",
             position: "relative",
             left: "60%",
+            marginBottom: "10px",
           }}
         >
           <form style={{ width: "480px" }}>
@@ -63,7 +69,7 @@ const Login = () => {
             <br />
             <br />
           </form>
-          <div style={{ fontFamily: "Didot", textAlign: "center" }}>
+          <div style={{ fontFamily: "Lucida Sans", textAlign: "center", color: 'grey' }}>
             You, as a company just click the Icon. No registration required.
           </div>
           <br />
@@ -78,7 +84,7 @@ const Login = () => {
                 }}
               />
               <br />
-              <span style={{ fontFamily: "Didot", width: "100%" }}>
+              <span style={{ fontFamily: "Lucida Sans", width: "100%", color: 'grey' }}>
                 Company Access
               </span>
             </div>
