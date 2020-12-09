@@ -118,7 +118,7 @@ function NewCard({
 
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              <table style={{ textAlign: "left", marginBottom: "2%" }}>
+              <table style={{ textAlign: "left", marginBottom: "2%", width: '100%' }}>
                 <thead>
                   <tr>
                     <th style={{ fontSize: "20px", color: "" }}>
