@@ -3,9 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import FileUpload from "./fileUpload";
-import PDF from './pdf'
-
-
+import PDF from "./pdf";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +50,9 @@ const PersonalSpaceCard = ({ skillDiv }) => {
         <Grid item xs={12} sm={6}>
           <Paper
             className={classes.paper}
-            style={{ wordBreak: "break-all", height: "400px" }}
+            style={{ 
+              // wordBreak: "break-all", 
+              height: "400px" }}
           >
             <Paper>
               <span style={{ fontWeight: "bold", fontSize: "20px" }}>
@@ -79,7 +79,7 @@ const PersonalSpaceCard = ({ skillDiv }) => {
           <Paper
             className={classes.paper}
             style={{
-              wordBreak: "break-all",
+              // wordBreak: "break-all",
               height: "400px",
               textAlign: "center",
             }}
@@ -107,13 +107,19 @@ const PersonalSpaceCard = ({ skillDiv }) => {
             </div>
           </Paper>
         </Grid>
-        <Grid item xs={12} style={{height: '100%'}}>
+        <Grid item xs={12} style={{ height: "100%" }}>
           <Paper
             className={classes.paper}
-            style={{ wordBreak: "break-all", width: "100%", display:'flex', justifyContent: 'center', height: '100%'}}
+            style={{
+              wordBreak: "break-all",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              height: "100%",
+            }}
           >
-            <div style={{height: '100%'}}>
-      <PDF CV={CV}/>
+            <div style={{ height: "100%" }}>
+              <PDF CV={CV} />
             </div>
           </Paper>
         </Grid>
@@ -124,6 +130,5 @@ const PersonalSpaceCard = ({ skillDiv }) => {
 //         <div style={{width:'100%'}}>
 // <div style={{border: '1px solid green', height: '100%', width: '20%' }}></div>
 //         </div>
-
 
 export default PersonalSpaceCard;

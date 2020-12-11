@@ -44,7 +44,7 @@ const Navbar = () => {
         to="/"
         style={{
           marginRight: "2%",
-          marginTop: "1%",
+          marginTop: "1.6%",
           marginBottom: "1%",
           textDecoration: "none",
         }}
@@ -57,7 +57,7 @@ const Navbar = () => {
         to="/info"
         style={{
           marginRight: "2%",
-          marginTop: "1%",
+          marginTop: "1.6%",
           marginBottom: "1%",
           textDecoration: "none",
         }}
@@ -71,26 +71,26 @@ const Navbar = () => {
                 </Button> */}
       <Link
         to="/login"
-        style={{ marginRight: "2%", marginTop: "1%", marginBottom: "1%" }}
+        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%", textDecoration: 'none' }}
       >
         <Button variant="contained" color="primary">
           Login
         </Button>
       </Link>
       <LinkedInIcon
-        style={{ marginRight: "2%", marginTop: "1%", marginBottom: "1%" }}
+        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
         color="primary"
       />
       <FacebookIcon
-        style={{ marginRight: "2%", marginTop: "1%", marginBottom: "1%" }}
+        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
         color="primary"
       />
       <TwitterIcon
-        style={{ marginRight: "2%", marginTop: "1%", marginBottom: "1%" }}
+        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
         color="primary"
       />
       <GitHubIcon
-        style={{ marginRight: "2%", marginTop: "1%", marginBottom: "1%" }}
+        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
       />
     </div>
   );

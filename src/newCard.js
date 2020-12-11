@@ -143,12 +143,12 @@ function NewCard({
                       {job_title}
                     </td>
                   </tr>
-                  <tr style={{}}>
+                  {/* <tr style={{}}>
                     <td style={{ whiteSpace: "nowrap" }}>DOB:</td>
                     <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
                       {dob}
                     </td>
-                  </tr>
+                  </tr> */}
                   <tr style={{}}>
                     <td style={{}}>City:</td>
                     <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>

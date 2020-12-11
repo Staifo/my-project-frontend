@@ -25,7 +25,7 @@ const Footer = () => {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
           }}
         >
           <img src={logo1} width="162px" style={{ marginTop: "6px" }} />{" "}

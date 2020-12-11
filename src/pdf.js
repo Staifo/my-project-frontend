@@ -31,4 +31,5 @@ function PDF({CV}) {
     );
   }
 
+
   export default PDF
