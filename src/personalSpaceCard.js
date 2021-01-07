@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useRef} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import FileUpload from "./fileUpload";
 import PDF from "./pdf";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
 const PersonalSpaceCard = ({ skillDiv }) => {
   const classes = useStyles();
   console.log(skillDiv);
+  const pdf = useRef(null);
+
+  const handleClick = () => {
+
+    window.print();
+  }
 
   const {
     job_title,
@@ -86,8 +94,8 @@ const PersonalSpaceCard = ({ skillDiv }) => {
           >
             <Paper>
               <span style={{ fontWeight: "bold", fontSize: "20px" }}>
-                Transferrable Skills and other Hard & Soft Skills
-              </span>
+                Transferrable Skills and other Hard & Soft Skills or short text
+              </span><br/>
               <span style={{ marginLeft: "4%", color: "lightgrey" }}>
                 Scale: 1 -10
               </span>
@@ -118,8 +126,10 @@ const PersonalSpaceCard = ({ skillDiv }) => {
               height: "100%",
             }}
           >
-            <div style={{ height: "100%" }}>
-              <PDF CV={CV} />
+            <div ref={pdf} style={{ height: "100%"}}>
+            
+            
+              <PDF CV={CV}/>
             </div>
           </Paper>
         </Grid>

@@ -7,25 +7,42 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import Searchbar from "./searchbar";
 import { Link } from "react-router-dom";
 import logo4 from "./images/logo4.png";
+import { useHistory } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    if (search) {
+      window.location.reload();
+    } else if (!search) {
+      history.push("/");
+      window.location.reload();
+    }
+  };
+
   return (
     <div
       style={{
         backgroundColor: "lightgrey",
         display: "flex",
         justifyContent: "flex-end",
+        width: "100%",
       }}
     >
-      <Link to="./" style={{ textDecoration: "none" }}>
-        <div style={{ marginLeft: "" }}>
-          <img src={logo4} width="90px" />
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div onClick={handleClick} style={{ marginTop: "2%" }}>
+          <img src={logo4} width="120px" />
         </div>
       </Link>
-      <Link to="./" style={{ textDecoration: "none", color: "black" }}>
+      <Link
+        onClick={handleClick}
+        to="/"
+        style={{ textDecoration: "none", color: "black" }}
+      >
         <div
           style={{
-            fontSize: "60px",
+            fontSize: "80px",
             fontFamily: "Impact",
             fontWeight: "bold",
             fontFamily: "Impact",
@@ -35,63 +52,97 @@ const Navbar = () => {
           JuniorCoder
         </div>
       </Link>
-      <div
-        style={{ width: "100%", display: "flex", justifyContent: "center",}}
-      >
-        <Searchbar />
+      <div className="searchbar" style={{ display: "flex", width: "100%" }}>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Searchbar
+            handleChange={handleChange}
+            key={key}
+            handleOnClick={handleOnClick}
+            userInput={userInput}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            to="/"
+            style={{
+              marginRight: "2%",
+              marginTop: "1.6%",
+              marginBottom: "1%",
+              textDecoration: "none",
+            }}
+          >
+            <Button variant="contained" color="primary" onClick={handleClick}>
+              Home
+            </Button>{" "}
+          </Link>
+          <Link
+            to="/info"
+            style={{
+              marginRight: "2%",
+              marginTop: "1.6%",
+              marginBottom: "1%",
+              textDecoration: "none",
+            }}
+          >
+            <Button variant="contained" color="primary">
+              Register
+            </Button>
+          </Link>
+          <Link
+            to="/login"
+            style={{
+              marginRight: "2%",
+              marginTop: "1.6%",
+              marginBottom: "1%",
+              textDecoration: "none",
+            }}
+          >
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+          </Link>
+        </div>
       </div>
-      <Link
-        to="/"
+      <div
         style={{
-          marginRight: "2%",
-          marginTop: "1.6%",
-          marginBottom: "1%",
-          textDecoration: "none",
+          display: "flex",
+          width: "20%",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginRight: "40px",
         }}
       >
-        <Button variant="contained" color="primary">
-          Home
-        </Button>{" "}
-      </Link>
-      <Link
-        to="/info"
-        style={{
-          marginRight: "2%",
-          marginTop: "1.6%",
-          marginBottom: "1%",
-          textDecoration: "none",
-        }}
-      >
-        <Button variant="contained" color="primary">
-          Register
-        </Button>
-      </Link>
-      {/* <Button variant="contained" color="primary" style={{marginRight: '2%', marginTop: '1%', marginBottom: '1%'}}>
-                 Login
-                </Button> */}
-      <Link
-        to="/login"
-        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%", textDecoration: 'none' }}
-      >
-        <Button variant="contained" color="primary">
-          Login
-        </Button>
-      </Link>
-      <LinkedInIcon
-        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
-        color="primary"
-      />
-      <FacebookIcon
-        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
-        color="primary"
-      />
-      <TwitterIcon
-        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
-        color="primary"
-      />
-      <GitHubIcon
-        style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
-      />
+        <LinkedInIcon
+          style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
+          color="primary"
+        />
+        <FacebookIcon
+          style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
+          color="primary"
+        />
+        <TwitterIcon
+          style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
+          color="primary"
+        />
+        <GitHubIcon
+          style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
+          color="primary"
+        />
+      </div>
     </div>
   );
 };

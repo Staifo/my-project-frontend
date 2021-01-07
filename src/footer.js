@@ -20,7 +20,7 @@ const Footer = () => {
         marginTop: "1%",
       }}
     >
-      <div style={{ height: "100%" }}>
+      <div className = 'footer' style={{ height: "100%", marginRight: '20px' }}>
         <li
           style={{
             display: "flex",

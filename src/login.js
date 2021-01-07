@@ -15,7 +15,7 @@ const Login = () => {
         height: "100%",
         width: "100%",
         backgroundColor: "#D9D9D9",
-        marginTop: "1%",
+        marginTop: "20px",
       }}
     >
       {/* <div className ='spring' style={{display: 'flex', width: '100%', height: '40%'}}>
@@ -28,9 +28,10 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             width: "min-content",
+            marginTop: '140px'
           }}
         >
-          <span className="nice">Welcome to</span>
+          <span className="nice">Welcome!</span>
           <span className="nice">get your</span>
           <span className="nice">junior</span>
           <span className="nice">Coder</span>
@@ -47,7 +48,7 @@ const Login = () => {
             marginBottom: "10px",
           }}
         >
-          <form style={{ width: "480px" }}>
+          <form className = 'logindiv' style={{}}>
             <input type="text" placeholder="Email" style={{ width: "100%" }} />{" "}
             <br />
             <br />

@@ -5,7 +5,7 @@ const CV = () => {
     <div style={{display: 'flex'}}>
       {/* <form
         method="POST"
-        action="http://localhost:3000/fileupload"
+        action="/api/fileupload"
         enctype="multipart/form-data"
         style={{ display: "flex", flexDirection: "column", textAlign: 'center' }}
       > */}

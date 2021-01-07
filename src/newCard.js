@@ -69,6 +69,7 @@ function NewCard({
   onOtherVideo,
   setOtherVideo,
   handleClick,
+  handleFav,
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -100,7 +101,7 @@ function NewCard({
     <div
       class="col-sm-4"
       className="cardSpace"
-      style={{ display: "flex", width: "100%" }}
+      style={{ display: "flex", width: "100%",}}
     >
       <div style={{ width: "98%" }}>
         <Card
@@ -109,11 +110,12 @@ function NewCard({
           style={{
             marginLeft: "",
             flex: "1",
+            position: 'sticky',
           }}
         >
           <CardMedia
             className={classes.media}
-            image={`http://localhost:3000/documents/${userCard.profile_pic}`}
+            image={`${process.env.NODE_ENV === "production" ? process.env.REACT_APP_DEPLOYED : process.env.REACT_APP_LOCAL}/documents/${userCard.profile_pic}`}
           />
 
           <CardContent>
@@ -121,15 +123,15 @@ function NewCard({
               <table style={{ textAlign: "left", marginBottom: "2%", width: '100%' }}>
                 <thead>
                   <tr>
-                    <th style={{ fontSize: "20px", color: "" }}>
+                    <th style={{ fontSize: "20px", color: "", fontFamily: 'Candara'}}>
                       {first_name}
                     </th>
-                    <th style={{ fontSize: "20px", color: "" }}>{last_name}</th>
+                    <th style={{ fontSize: "20px", color: "", fontFamily: 'Candara' }}>{last_name}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{}}>
-                    <td style={{ fontSize: "20px", fontWeight: "bold" }}>
+                    <td style={{ fontSize: "20px", fontWeight: "bold", fontFamily: 'Candara' }}>
                       Job title:
                     </td>
                     <td
@@ -138,6 +140,7 @@ function NewCard({
                         whiteSpace: "nowrap",
                         fontSize: "20px",
                         fontWeight: "bold",
+                        fontFamily: 'Candara'
                       }}
                     >
                       {job_title}
@@ -151,13 +154,13 @@ function NewCard({
                   </tr> */}
                   <tr style={{}}>
                     <td style={{}}>City:</td>
-                    <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
+                    <td style={{ textAlign: "left", whiteSpace: "nowrap", fontFamily: 'Candara' }}>
                       {city}
                     </td>
                   </tr>
                   <tr style={{}}>
                     <td style={{ whiteSpace: "nowrap" }}>Last update:</td>
-                    <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
+                    <td style={{ textAlign: "left", whiteSpace: "nowrap", }}>
                       {last_updated}
                     </td>
                   </tr>
@@ -236,8 +239,10 @@ function NewCard({
               onClick={handleExpandClick}
               aria-expanded={expanded}
               aria-label="show more"
+              style={{marginLeft: '60%'}}
             >
               <ExpandMoreIcon />
+              <span style={{fontSize: '16px', fontFamily: 'Candara'}}>Contact Details</span>
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -268,15 +273,12 @@ function NewCard({
                       <tr>
                         <td>
                         </td>
-                        <td>{city}</td>
+                        <td>{postal_code} {city}</td>
+                        <td></td>
                       </tr>
                       <tr>
                         <td></td>
-                        <td>{postal_code}</td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td style={{paddingBottom: '20px'}}>{country}</td>
+                        <td>{country}</td>
                       </tr>
                       <tr>
                         <td>

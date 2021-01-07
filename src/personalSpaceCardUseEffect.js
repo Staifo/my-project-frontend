@@ -12,7 +12,7 @@ const PersonalSpaceUseEffect = ({ datas, data, onChooseVideo, onOtherVideo }) =>
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/singleUser/${id}`)
+    fetch(`/api/singleUser/${id}`)
       .then((res) => res.json())
       .then((database) => setSkillDiv(database));
   }, []);

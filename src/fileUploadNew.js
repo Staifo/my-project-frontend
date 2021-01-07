@@ -4,10 +4,6 @@ const FileUploadNew = () => {
   return (
     <div style={{display: 'flex'}}>
       <form
-        // method="POST"
-        // action="http://localhost:3000/fileupload"
-        // enctype="multipart/form-data"
-        // style={{ display: "flex", textAlign: 'center' }}
       >
         <div>
 

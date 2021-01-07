@@ -1,19 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Searchbar = () => {
+
+const Searchbar = ({handleChange, handleOnClick, userInput}) => {
+  
+  const key = (e) => {
+    if (e.key === 'Enter') {
+      return handleOnClick();
+    }
+  }
+
+ 
+
   return (
-    <div
+    <div 
       style={{
         display: "flex",
         justifyContent: "center",
         marginRight: "2%",
         width: "100%",
-        marginLeft: "10%",
         height: "36px",
-        marginTop: "26px",
+        
       }}
     >
-      <input type="search" placeholder="Search" style={{ width: "60%" }} />
+      <input type="search" placeholder="Search" style={{ width: "60%" }} onChange={handleChange} onKeyDown={key} value={userInput}/>
+      <button onClick={handleOnClick}>Search</button>
     </div>
   );
 };

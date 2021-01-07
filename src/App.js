@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import WebcamStreamCapture from "./cam";
 import { useRef } from "react";
 import { Scrollbar } from "react-scrollbars-custom";
-
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -40,6 +40,8 @@ import Login from "./login";
 import Info from "./info";
 import NewCard from "./newCard";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import { useHistory } from "react-router-dom";
+import TestCard from "./testCard";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -67,21 +69,56 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App({item}) {
   const [datas, setDatas] = useState(null);
   const [data, setData] = useState(null);
   const [chosenVideo, setChosenVideo] = useState(null);
   const [personalSpace, setPersonalSpace] = useState(null);
   const [otherVideo, setOtherVideo] = useState(null);
-  const [fav, setFav]=useState(null);
-  const [createCard, setCreateCard] =useState(null);
-  console.log(createCard)
+  const [fav, setFav] = useState(null);
+  const [createCard, setCreateCard] = useState(null);
+  const [search, setSearch] = useState(null);
+  const [userInput, setUserInput] = useState(null);
+
+  const history = useHistory();
+  const { id } = useParams();
+  const video = useRef(null);
+  console.log(search);
+  console.log(data);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setUserInput(e.target.value);
+    // if (!e.target.value) {
+    //   window.location.reload();
+    // }
+  };
+
+  const handleOnClick = () => {
+    setSearch(userInput);
+    history.push("/");
+   
+   
+  };
+
+  // const handleOnClick = () => {
+  //   setSearch(userInput);
+  //   history.push('/found')
+
+  // }
+
+
+  
+  console.log(createCard);
 
   const cam = useRef();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  // const [oneCard, setOneCard]=useState(null);
-  // const [id, setId]=useState(null);
+
+
+  // const favoriteCards = [];
+  // console.log(favoriteCards)
+ 
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -89,54 +126,111 @@ function App() {
 
   console.log(datas);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setCreateCard(e.target);
+  };
+
+  // const handleFav = (e) => {
+  //  setFav(e);
+  //  setFav(datas[0]._id)
+  // }
+
+
+  // const favo = fav && datas.filter(item=>{favoriteCards.push( <TestCard
+  //   item={item}
+  //   onChooseVideo={setChosenVideo}
+  //   url={chosenVideo}
+  //   handleClick={handleClick}
+  // />
+  //     )})
+
+  const handleFav = (e) => {
+    setFav(e.target);
+      
+  };
+  console.log(fav);
+
+
   useEffect(() => {
-    fetch("http://localhost:3000/singleUser")
+    fetch(`/api/singleUser`)
       .then((response) => response.json())
       .then((database) => setDatas(database));
   }, []);
-  
-const handleClick =(e) => {
-  e.preventDefault();
- setCreateCard(e.target)
 
-} 
-
-
+ 
   return (
     <div style={{ width: "100%" }}>
-      <Navbar />
+      <Navbar
+        handleChange={handleChange}
+        handleOnClick={handleOnClick}
+        userInput={userInput}
+        search={search}
+      />
+
       <div
         className="App"
         style={{ height: "100%", width: "100%", display: "flex" }}
       >
         <Switch>
           <Route exact path="/">
-          <div style={{display: 'flex', flexDirection: 'column', position: 'sticky', top: '0'}}>
-            {datas && <Video url={chosenVideo}/>}
-          {/* <div style={{width: '100%', height: '100%'}}> */}
-       
-          {/* <TextareaAutosize
-      rowsMax={100}
-      aria-label="maximum height"
-      placeholder=""
-      defaultValue=""
-      style={{width: '100%', height: '100%', marginTop: '2%'}}
-    /> */}
-          {/* </div> */}
-            </div>
-
-            {datas && (
-              <ExtractData
-                datas={datas}
-                onChooseVideo={setChosenVideo}
-                url={chosenVideo}
-                handleClick={handleClick}
+            <div
+            ref={video} 
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                position: "sticky",
+                top: "0",
+                marginRight: "20px",
+                marginLeft: "20px",
+                zIndex: "10",
+              }}
+            >
+              {datas && <Video url={chosenVideo}/>}
               
-                
-                
-              />
-            )}
-           
+                          {/* {favoriteCards} */}
+            </div>
+            <div>
+              <div style={{ width: "100%", zIndex: "0" }}>
+                {datas && !search && (
+                  <ExtractData
+                    datas={datas}
+                    onChooseVideo={setChosenVideo}
+                    url={chosenVideo}
+                    handleClick={handleClick}
+                    handleFav={handleFav} 
+                  />
+                )}
+              </div>
+              <div style={{ width: "100%", zIndex: "10" }}>
+                {datas &&
+                  search &&
+                  datas
+                    .filter((item) => {
+                      return search
+                        ? item.coding_skills.toLowerCase().includes(search) ||
+                            item.coding_skills.toUpperCase().includes(search) ||
+                            item.first_name.toLowerCase().includes(search) ||
+                            item.last_name.toLowerCase().includes(search) ||
+                            item.city.toLowerCase().includes(search) ||
+                            item.job_title.toLowerCase().includes(search)
+                        : datas;
+                    })
+                    .map((item) => {
+                      return (
+                        <div style={{ display: "flex", marginTop: "20px" }}>
+                          <TestCard
+                            item={item}
+                            onChooseVideo={setChosenVideo}
+                            url={chosenVideo}
+                            handleClick={handleClick}
+                          />
+                        </div>
+                      );
+                    })}
+              </div>
+            </div>
           </Route>
           <Route path="/singleUser/:id?/">
             <div
@@ -144,23 +238,21 @@ const handleClick =(e) => {
                 whiteSpace: "nowrap",
                 marginRight: "1%",
                 marginLeft: "1%",
-                width: 'max-content'
-                
+                width: "max-content",
               }}
             >
-            <div style={{width: '100%'}}>
-              <MyPersonalSpace
-                datas={datas}
-                onChooseVideo={setChosenVideo}
-                url={chosenVideo}
-               handleClick={handleClick}
-               
-              />
-            
-              {datas && <Video url={chosenVideo} className="video1" />}
+              <div style={{ width: "100%", position: "sticky", top: "0" }}>
+                <MyPersonalSpace
+                  datas={datas}
+                  onChooseVideo={setChosenVideo}
+                  url={chosenVideo}
+                  handleClick={handleClick}
+                />
+
+                {datas && <Video url={chosenVideo} className="video1" />}
               </div>
-              </div>
-            
+            </div>
+
             <PersonalSpaceUseEffect datas={datas} />
 
             {/* <CardActions disableSpacing>
@@ -188,7 +280,10 @@ const handleClick =(e) => {
             /> */}
           </Route>
           <Route path="/cam">
-            <div ref={cam} style={{display: 'flex', justifyContent: 'center', border: '2px solid yellow'}}>
+            <div
+              ref={cam}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <WebcamStreamCapture />
             </div>
           </Route>
@@ -200,6 +295,49 @@ const handleClick =(e) => {
           </Route>
         </Switch>
       </div>
+      {/* { datas && datas
+              .filter((item)=>{
+                return search ? item.coding_skills.toLowerCase().includes(search) : data
+              })
+              .map((item)=>{ 
+                return (
+                  <div style={{width: '100%', display: 'flex'}}>
+                  <Switch>
+                  <Route path='/found'>
+                  <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                position: "sticky",
+                top: "0",
+                marginRight: "20px",
+                marginLeft: "20px",
+                zIndex: "10",
+              }}
+            >
+              <Video url={chosenVideo} />
+            
+            </div>
+            <div style={{ width: "100%" }}>
+              
+            <TestCard
+                  item={item}
+                  onChooseVideo={setChosenVideo}
+                  url={chosenVideo}
+                  handleClick={handleClick}
+                />
+              
+            </div>
+                </Route>
+                </Switch>
+                </div>
+               
+                )
+                
+              })
+
+              } */}
       <Footer />
     </div>
   );

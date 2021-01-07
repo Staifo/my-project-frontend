@@ -12,6 +12,7 @@ import WebcamStreamCapture from "./cam";
 import FileUpload from "./fileUpload";
 import { useHistory } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -26,9 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Info = () => {
   const history = useHistory();
   const classes = useStyles();
-  const [camDis, setCamDis] = useState(null);
   const [userCreated, setUserCreated] = useState(false);
-  const [createCard, setCreateCard] = useState(null);
   const [videoUploaded, setVideoUploaded] = useState(false);
   const [fileUploaded, setFileUploaded] = useState({
     profile_pic: false,
@@ -65,7 +64,7 @@ const Info = () => {
   function handleOnClick(e) {
     e.preventDefault();
     console.log("success");
-    fetch("http://localhost:3000/singleuser", {
+    fetch("/api/singleuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,8 +86,6 @@ const Info = () => {
           >
             {!userCreated && (
               <form
-                // action="http://localhost:3000/singleuser"
-                // method="POST"
                 style={{
                   display: "flex",
                   width: "100%",
@@ -96,7 +93,6 @@ const Info = () => {
                   justifyContent: "space-between",
                 }}
                 onChange={handleOnChange}
-                // enctype="multipart/form-data"
               >
                 <div
                   style={{
@@ -112,6 +108,9 @@ const Info = () => {
                   <div>First Name</div>
                   <input type="text" name="first_name" />
 
+                  <div>Phone</div>
+                  <input type="tel" name="phone" />
+
                   <div>Last Name</div>
                   <input type="text" name="last_name" />
 
@@ -120,6 +119,7 @@ const Info = () => {
                     name="dob"
                     type="date"
                     id="birthday"
+                    value='01.10.2020'
                     style={{ width: "100%" }}
                   />
 
@@ -127,7 +127,7 @@ const Info = () => {
                   <input type="email" name="email" />
 
                   <div>Password</div>
-                  <input type="password" name="password" />
+                  <input type="password" name="password" placeholder = 'min 6 characters' />
 
                   <div>Street</div>
                   <input type="text" name="street" />
@@ -173,7 +173,7 @@ const Info = () => {
                     style={{ display: "flex", width: "100%", height: "100%" }}
                   >
                     <div style={{ width: "46%", height: "100%" }}>
-                      <div style={{ height: "80px", textAlign: "center" }}>
+                      <div style={{ height: "100px", textAlign: "center" }}>
                         Coding Skills and Coding Related Skills
                       </div>
                       <TextareaAutosize
@@ -198,11 +198,11 @@ const Info = () => {
                         style={{
                           width: "100%",
                           textAlign: "center",
-                          height: "80px",
+                          height: "100px",
                         }}
                       >
-                        Transferrable Skills and other Soft & Hard Skills <br />
-                        (Scale 1(bad) -10(very good)) or write a short text
+                        Transferrable Skills and other Soft & Hard Skills
+                        (Scale 1(bad) - 10(very good)) <br/> or write a short text
                       </div>
                       <TextareaAutosize
                         aria-label="minimum height"
@@ -246,8 +246,11 @@ const Info = () => {
             )}
           </Paper>
           {userCreated && !videoUploaded && (
+           <div style={{width: '100%'}}>
+           <div style={{height: '200px'}}></div>
             <Grid item xs={12}>
               <div
+              className = 'formcam'
                 style={{
                   display: "flex",
                   width: "100%",
@@ -269,7 +272,6 @@ const Info = () => {
                       justifyContent: "center",
                       position: "relative",
                       width: "100%",
-
                       marginLeft: "10%",
                     }}
                   >
@@ -279,17 +281,21 @@ const Info = () => {
                         color="primary"
                         style={{ fontSize: "20em" }}
                       />
-                      <span>Click here and start recording your video</span>
+                      <span>Click here</span>
                     </div>
                     <div
+                     
                       ref={camOn}
                       style={{
                         position: "absolute",
                         zIndex: "10",
                         textAlign: "center",
-                        marginRight: "10em",
+                        display: "flex",
+                        justifyContent: "center",
                         visibility: "hidden",
-                        zIndex: "10",
+                        marginTop:'10%',
+                        marginBottom: '10%',
+                        width: '100%',
                       }}
                     >
                       <WebcamStreamCapture
@@ -301,7 +307,9 @@ const Info = () => {
                   </div>
                 </div>
               </div>
+              <div style={{height: '200px'}}></div>
             </Grid>
+            </div>
           )}
           {userCreated && videoUploaded && (
             <div style={{display: 'flex', justifyContent: 'center'}}>

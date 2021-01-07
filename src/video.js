@@ -17,40 +17,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Video = ({ url }) => {
+
+
   const classes = useStyles();
-  console.log(`http://localhost:3000/uploads/${url}`);
   return (
     <div
+    className='videoDiv'
       style={{
         height: "min-content",
         width: "min-content",
-        marginTop: "4.8%",
-        display: "block",
+        marginTop: "20px",
+        display: "flex",
+        justifyContent: 'center',
         whiteSpace: "none",
         position: "sticky",
         top: "0",
+        width: '100%',
+
+        
+        
       }}
     >
       {!url && (
         <ReactPlayer
+          className = 'videoOne'
           url="https://cdn.videvo.net/videvo_files/video/free/2013-08/small_watermarked/hd0983_preview.webm"
           muted={false}
           playing={true}
-          loop={false}
+          loop={true}
           controls={true}
         />
       )}
       {url && (
         <ReactPlayer
-          url={`http://localhost:3000/uploads/${url}`}
-          style={{ width: "30%", flex: 1, height: "48%", marginRight: "2%" }}
+        
+          url={`${process.env.NODE_ENV === "production" ? process.env.REACT_APP_DEPLOYED : process.env.REACT_APP_LOCAL}/uploads/${url}`}
+          style={{ width: "100%", flex: 1, height: "48%", marginRight: "2%",}}
           muted={false}
           playing={true}
           loop={false}
           controls={true}
+         
         />
       )}
-      <Grid container spacing={3} style={{ marginTop: "4%" }}>
+      {/* <Grid container spacing={3} style={{ marginTop: "4%" }} className='job'>
         <Grid item xs={12} style={{ width: "400px" }}>
           <Paper className={classes.paper} style={{ wordBreak: "break-all" }}>
             <Paper style={{ fontSize: "20px", fontWeight: "bold" }}>
@@ -60,7 +70,6 @@ const Video = ({ url }) => {
               <div
                 style={{
                   textAlign: "center",
-
                   justifyContent: "center",
                   marginTop: "4%",
                   overflowWrap: "break-word",
@@ -83,8 +92,7 @@ const Video = ({ url }) => {
                   </div>
                 </a>
                 <div className="jobs" style={{ color: "blue", width: "100%" }}>
-                  TESLA Coding School offers Junior Developer Positions, start
-                  ASAP, vacancies: 10000, <br />
+                  TESLA Coding School offers Junior Developer Positions, vacancies: 10000, <br />
                   location: worldwide{" "}
                   <p style={{ fontSize: "14px", color: "grey" }}>
                     We are looking for passionate Junior Developers of all kinds
@@ -125,7 +133,7 @@ const Video = ({ url }) => {
             </div>
           </Paper>
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -28,7 +28,6 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "345",
@@ -54,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OneCard({
+function TestCard({
   datas,
   url,
   onChooseVideo,
@@ -62,41 +61,20 @@ function OneCard({
   onChoosePersonalSpace,
   userCard,
   handleClick,
-  handleFav,
-})
-
-{
+  item
+}) {
   console.log(data);
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const history = useHistory();
-  const favorite = useRef(null);
-  const [like, setLike] =useState(null);
-  console.log(like);
-
-
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleOnClick = (e) => {
-    history.push(`/singleUser/${_id}`);
-    window.location.reload();
-  };
-
- 
-
-const handleFavorite = (e) => {
-  setLike(e.target);
-
-}
-
-const handleFavoriteNew = () => {
-  setLike(null)
-}
-  
-// const favC = like && favCard.push('hallo')
+  const handleOnClick = () => {
+    history.push(`/singleUser/${_id}`)
+  }
 
   const {
     job_title,
@@ -113,7 +91,7 @@ const handleFavoriteNew = () => {
     profile_pic,
     linkedin_url,
     github_url,
-  } = data;
+  } = item;
 
   console.log(data);
 
@@ -122,19 +100,22 @@ const handleFavoriteNew = () => {
   //   locale: eoLocale
 
   return (
-    <div
-      class="col-sm-4"
-      className="cardSpace"
-      style={{ marginLeft: "20px", marginTop: "20px" }}
-    >
-      <Card className={classes.root} id="card" style={{}}>
+    <div style={{display: 'flex', width: '100%'}}>
+      <Card
+        className={classes.root}
+       
+        style={{
+          width: '100%',
+          width: '100%'
+        }}
+      >
         <CardMedia
           className={classes.media}
           image={`${
             process.env.NODE_ENV === "production"
               ? process.env.REACT_APP_DEPLOYED
               : process.env.REACT_APP_LOCAL
-          }/documents/${data.profile_pic}`}
+          }/documents/${item.profile_pic}`}
         />
 
         <CardContent>
@@ -144,56 +125,13 @@ const handleFavoriteNew = () => {
             >
               <thead>
                 <tr>
-                  <th
-                    style={{
-                      fontSize: "18px",
-                      color: "",
-                      fontFamily: "Candara",
-                    }}
-                  >
-                    {first_name}{" "}
-                  </th>
-                  <th
-                    style={{
-                      fontSize: "18px",
-                      color: "",
-                      fontFamily: "Candara",
-                    }}
-                  >
-                    {last_name}{" "}
-
-                 {!like && <span style={{}}>
-                      <IconButton
-                        aria-label="add to favorites"
-                        onClick={handleFav}
-                        style={{color: 'grey'}}
-                      >
-                        <FavoriteIcon  onClick={handleFavorite}
-                        ref={favorite}/>
-                      </IconButton>
-                    </span>}
-                    {like && <span style={{}}>
-                      <IconButton
-                        aria-label="add to favorites"
-                        onClick={handleFav}
-                        style={{color: 'red'}}
-                      >
-                        <FavoriteIcon  onClick={handleFavoriteNew}
-                        ref={favorite}/>
-                      </IconButton>
-                    </span>}
-                  </th>
+                  <th style={{ fontSize: "18px", color: "", fontFamily: 'Candara' }}>{first_name}</th>
+                  <th style={{ fontSize: "18px", color: "", fontFamily: 'Candara' }}>{last_name}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style={{}}>
-                  <td
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      fontFamily: "Candara",
-                    }}
-                  >
+                  <td style={{ fontSize: "14px", fontWeight: "bold", fontFamily: 'Candara' }}>
                     Job title:
                   </td>
                   <td
@@ -201,7 +139,8 @@ const handleFavoriteNew = () => {
                       textAlign: "left",
                       fontWeight: "bold",
                       fontSize: "14px",
-                      fontFamily: "Candara",
+                      fontFamily: 'Candara',
+                    
                     }}
                   >
                     {job_title}
@@ -215,68 +154,47 @@ const handleFavoriteNew = () => {
                 </tr> */}
                 <tr style={{}}>
                   <td style={{}}>City:</td>
-                  <td
-                    style={{
-                      textAlign: "left",
-                      whiteSpace: "nowrap",
-                      fontFamily: "Candara",
-                    }}
-                  >
+                  <td style={{ textAlign: "left", whiteSpace: "nowrap", fontFamily: 'Candara'}}>
                     {city}
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table style={{ width: "100%" }}>
+            <table style={{width: '100%'}}>
               <thead>
                 <tr style={{}}>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  className="table"
-                  colspan="2"
-                  style={{ textAlign: "center", width: "100%" }}
-                >
+                <tr className = 'table' colspan="2" style={{ textAlign: "center", width: '100%'}}>
                   <td
                     colspan="2"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      fontFamily: "Candara",
-                      width: "100%",
-                    }}
+                    style={{ textAlign: "center", fontWeight: "bold", fontFamily: 'Candara', width: '100%'}}
                   >
                     {coding_skills}
                   </td>
                 </tr>
                 <br />
                 <tr style={{}}>
-                  <td style={{ textAlign: "left", whiteSpace: "nowrap" }}></td>
+                  <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-                zIndex: "0",
+            <div style={{width: '100%', display: 'flex', justifyContent: 'space-around', zIndex:'0'}}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{marginTop: "2%",}}
+              onClick={(e) => {
+                onChooseVideo(item.video);
+                e.preventDefault();
               }}
             >
-              <Button
-                variant="contained"
-                color="primary"
-                style={{ marginTop: "2%" }}
-                onClick={(e) => {
-                  onChooseVideo(data.video);
-                  e.preventDefault();
-                }}
-              >
-                Play Video
-              </Button>
-              {/* <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none" }}> */}
+              Play Video
+            </Button>
+            {/* <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none" }}> */}
               <Button
                 variant="contained"
                 color="primary"
@@ -285,30 +203,24 @@ const handleFavoriteNew = () => {
               >
                 More Info
               </Button>
-            </div>
+              </div>
             {/* </Link> */}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: "100%",
-            }}
-          >
-            <Typography paragraph style={{}}>
+        <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
+       <Typography paragraph style={{}}>
               <TwitterIcon
                 style={{
                   marginRight: "2%",
-                  marginLeft: "1%",
+                  marginLeft: '1%',
                   marginTop: "1%",
                   marginBottom: "1%",
                 }}
                 color="primary"
               />
-            </Typography>
-            <Typography paragraph style={{}}>
+        </Typography>
+           <Typography paragraph style={{}}>
               <FacebookIcon
                 style={{
                   marginRight: "2%",
@@ -317,8 +229,8 @@ const handleFavoriteNew = () => {
                 }}
                 color="primary"
               />
-            </Typography>
-            <Typography paragraph style={{}}>
+          </Typography>
+           <Typography paragraph style={{}}>
               <a href={linkedin_url}>
                 <LinkedInIcon
                   style={{
@@ -329,11 +241,10 @@ const handleFavoriteNew = () => {
                   color="primary"
                 />
               </a>
-            </Typography>
-            <Typography paragraph>
+          </Typography>
+           <Typography paragraph>
               <a href={github_url}>
-                <GitHubIcon
-                  color="primary"
+                <GitHubIcon color="primary"
                   style={{
                     // marginRight: "2%",
                     marginTop: "1%",
@@ -341,8 +252,8 @@ const handleFavoriteNew = () => {
                   }}
                 />
               </a>
-            </Typography>
-            {/* <IconButton aria-label="add to favorites" onClick={handleClick}>
+          </Typography>
+          {/* <IconButton aria-label="add to favorites" onClick={handleClick}>
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
@@ -413,77 +324,10 @@ const handleFavoriteNew = () => {
       </Card>
     </div>
 
-    // {/* <div
-    //   style={{ display: "flex", width: "600px", border: "1px solid black",}}
-    // >
-    //   <div>
-    //     <img src={dFood2} style={{ display: "flex", width: "200px", height: '100%' }} />
-    //   </div>
-
-    //   <div>
-    //   <ul style={{ listStyleType: "none" }}>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //   </ul>
-    //   <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-    //   <div>
-    //   <button onClick={() => onChooseVideo(datas.video_url)}>
-    //     Play Video
-    //   </button></div>
-    //   <div>
-    //   <button>More Info</button></div>
-    //   </div>
-    //   </div>
-    // </div> */}
+   
   );
 }
 
-export default OneCard;
+export default TestCard;
 
-// import React from 'react'
-// import {Link} from 'react-router-dom'
 
-// // import 'bootstrap/dist/css/bootstrap.min.css';
-
-// const Card = ()=>{
-
-//    return (
-//       <div>
-
-//       </div>)
-
-//     return (
-//     <div>
-//  <div class="card" style={{width: '140%'}}>
-//         <div class="row no-gutters">
-//             <div class="col-auto">
-//                 <img src="//placehold.it/200" class="img-fluid" alt=""/>
-//             </div>
-//             <div class="col">
-//                 <div class="card-block px-2">
-//                     <h4 class="card-title">User-Name</h4>
-//                     <p class="card-text">Description/Motto/Tweet of the day</p>
-//                     <ol>
-//                     <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-
-//                     </ol>
-//                     <Link to="/usermessages" class="btn btn-primary">See all messages of</Link>
-//                 </div>
-//             </div>
-//         </div>
-//         <div class="card-footer w-100 text-muted">
-//             I love chickens...
-//         </div>
-//   </div>
-//     </div>
-//     )
-
-// }

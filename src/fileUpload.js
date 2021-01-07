@@ -13,7 +13,7 @@ const FileUpload = ({userCreated, type, setFileUploaded}) => {
     data.append('type', type)
     data.append('userFile', selectedFile);
     console.log({data})
-    fetch('http://localhost:3000/fileupload',
+    fetch('/api/fileupload',
     {
       method: 'POST',
       body: data

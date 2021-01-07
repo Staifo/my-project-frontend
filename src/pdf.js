@@ -19,9 +19,9 @@ function PDF({CV}) {
    
     return (
         
-      <div>
+      <div style={{width:'100%'}}>
         <Document
-          file={{url: `http://localhost:3000/documents/${CV}` }}
+          file={{url: `${process.env.NODE_ENV === "production" ? process.env.REACT_APP_DEPLOYED : process.env.REACT_APP_LOCAL}/documents/${CV}` }}
           onLoadSuccess={onDocumentLoadSuccess}>
            {Array.from(new Array(numPages), (el, index) => (
             <Page key={`page_${index + 1}`} pageNumber={index + 1} />
