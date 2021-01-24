@@ -79,12 +79,15 @@ function App({item}) {
   const [createCard, setCreateCard] = useState(null);
   const [search, setSearch] = useState(null);
   const [userInput, setUserInput] = useState(null);
+  
 
   const history = useHistory();
   const { id } = useParams();
   const video = useRef(null);
   console.log(search);
   console.log(data);
+  console.log(createCard);
+  console.log(datas);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -97,8 +100,6 @@ function App({item}) {
   const handleOnClick = () => {
     setSearch(userInput);
     history.push("/");
-   
-   
   };
 
   // const handleOnClick = () => {
@@ -106,11 +107,6 @@ function App({item}) {
   //   history.push('/found')
 
   // }
-
-
-  
-  console.log(createCard);
-
   const cam = useRef();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -124,12 +120,14 @@ function App({item}) {
     setExpanded(!expanded);
   };
 
-  console.log(datas);
+  
 
   const handleClick = (e) => {
     e.preventDefault();
     setCreateCard(e.target);
   };
+
+  
 
   // const handleFav = (e) => {
   //  setFav(e);
@@ -144,6 +142,8 @@ function App({item}) {
   //   handleClick={handleClick}
   // />
   //     )})
+
+  
 
   const handleFav = (e) => {
     setFav(e.target);
@@ -232,8 +232,8 @@ function App({item}) {
               </div>
             </div>
           </Route>
-          <Route path="/singleUser/:id?/">
-            <div
+      <Route path="/singleUser/:id?/">
+            <div className='cardVidDivFirstApp'
               style={{
                 whiteSpace: "nowrap",
                 marginRight: "1%",
@@ -241,7 +241,7 @@ function App({item}) {
                 width: "max-content",
               }}
             >
-              <div style={{ width: "100%", position: "sticky", top: "0" }}>
+              <div className = 'cardVidDiv' style={{ width: "100%", position: "sticky", top: "0",}}>
                 <MyPersonalSpace
                   datas={datas}
                   onChooseVideo={setChosenVideo}

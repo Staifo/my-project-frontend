@@ -21,6 +21,14 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
     }
   };
 
+  const registerClick = () => {
+   if (!search) { 
+     setTimeout(()=>{ window.location.reload(); }, 1000);
+    
+  }
+   }
+  
+
   return (
     <div
       style={{
@@ -98,7 +106,7 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
               textDecoration: "none",
             }}
           >
-            <Button variant="contained" color="primary">
+            <Button onClick={registerClick} variant="contained" color="primary">
               Register
             </Button>
           </Link>

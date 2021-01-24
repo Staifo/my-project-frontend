@@ -27,6 +27,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import Favorite from './favorite';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OneCard({
+function FavoriteCard({
   datas,
   url,
   onChooseVideo,
@@ -63,20 +65,16 @@ function OneCard({
   userCard,
   handleClick,
   handleFav,
-
+  favoCard,
 })
 
 {
   console.log(data);
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const [like, setLike] =useState(null);
   const history = useHistory();
   const favorite = useRef(null);
-  console.log(like);
-
-
-  const favCard = [];
+ 
 
 
   const handleExpandClick = () => {
@@ -84,20 +82,11 @@ function OneCard({
   };
 
   const handleOnClick = (e) => {
-    history.push(`/singleUser/${_id}`);
+    // history.push(`/singleUser/fav/${_id}`);
     window.location.reload();
   };
 
-  const handleFavorite = (e) => {
-    setLike(e.target);
-    favorite.current.style.color = 'red';
   
-  }
-  
-  const handleFavoriteNew = () => {
-    setLike(null)
-    // history.push(`/singleUser/${_id}`);
-  }
 
 
 
@@ -118,9 +107,9 @@ function OneCard({
     profile_pic,
     linkedin_url,
     github_url,
-  } = data;
+  } = favoCard;
 
-  console.log(data);
+  console.log(favoCard);
 
 
 
@@ -141,7 +130,7 @@ function OneCard({
             process.env.NODE_ENV === "production"
               ? process.env.REACT_APP_DEPLOYED
               : process.env.REACT_APP_LOCAL
-          }/documents/${data.profile_pic}`}
+          }/documents/${favoCard.profile_pic}`}
         />
 
         <CardContent>
@@ -169,26 +158,17 @@ function OneCard({
                   >
                     {last_name}{" "}
 
-                 {!like && <span style={{}}>
+                <span style={{}}>
                       <IconButton
                         aria-label="add to favorites"
                         onClick={handleFav}
                         style={{color: 'grey'}}
                       >
-                        <FavoriteIcon  onClick={handleFavorite}
+                        <FavoriteIcon 
                         ref={favorite}/>
                       </IconButton>
-                    </span>}
-                    {like && <span style={{}}>
-                      <IconButton
-                        aria-label="add to favorites"
-                        onClick={handleFav}
-                        style={{color: 'red'}}
-                      >
-                        <FavoriteIcon  onClick={handleFavoriteNew}
-                        ref={favorite}/>
-                      </IconButton>
-                    </span>}
+                    </span>
+                 
                   </th>
                 </tr>
               </thead>
@@ -214,12 +194,6 @@ function OneCard({
                     {job_title}
                   </td>
                 </tr>
-                {/* <tr style={{}}>
-                  <td style={{ whiteSpace: "nowrap" }}>DOB:</td>
-                  <td style={{ textAlign: "left", whiteSpace: "nowrap" }}>
-                    {dob}
-                  </td>
-                </tr> */}
                 <tr style={{}}>
                   <td style={{}}>City:</td>
                   <td
@@ -277,13 +251,12 @@ function OneCard({
                 color="primary"
                 style={{ marginTop: "2%" }}
                 onClick={(e) => {
-                  onChooseVideo(data.video);
+                  onChooseVideo(favoCard.video);
                   e.preventDefault();
                 }}
               >
                 Play Video
               </Button>
-              {/* <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none" }}> */}
               <Button
                 variant="contained"
                 color="primary"
@@ -342,155 +315,20 @@ function OneCard({
                 <GitHubIcon
                   color="primary"
                   style={{
-                    // marginRight: "2%",
                     marginTop: "1%",
                     marginBottom: "1%",
                   }}
                 />
               </a>
             </Typography>
-            {/* <IconButton aria-label="add to favorites" onClick={handleClick}>
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-            <span style={{ fontSize: "10px" }}>
-              click here for important links
-            </span>
-          </IconButton> */}
+            
           </div>
         </CardActions>
-        {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>
-              <TwitterIcon
-                style={{
-                  marginRight: "2%",
-                  marginTop: "1%",
-                  marginBottom: "1%",
-                }}
-                color="primary"
-              />
-            </Typography>
-            <Typography paragraph>
-              <FacebookIcon
-                style={{
-                  marginRight: "2%",
-                  marginTop: "1%",
-                  marginBottom: "1%",
-                }}
-                color="primary"
-              />
-            </Typography>
-            <Typography paragraph>
-              <a href={linkedin_url}>
-                <LinkedInIcon
-                  style={{
-                    marginRight: "2%",
-                    marginTop: "1%",
-                    marginBottom: "1%",
-                  }}
-                  color="primary"
-                />
-              </a>
-            </Typography>
-            <Typography paragraph>
-              <a href={github_url}>
-                <GitHubIcon
-                  style={{
-                    marginRight: "2%",
-                    marginTop: "1%",
-                    marginBottom: "1%",
-                  }}
-                />
-              </a>
-            </Typography>
-          </CardContent>
-        </Collapse> */}
+    
       </Card>
     </div>
-
-    // {/* <div
-    //   style={{ display: "flex", width: "600px", border: "1px solid black",}}
-    // >
-    //   <div>
-    //     <img src={dFood2} style={{ display: "flex", width: "200px", height: '100%' }} />
-    //   </div>
-
-    //   <div>
-    //   <ul style={{ listStyleType: "none" }}>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //     <li>Name:{datas.first_name}</li>
-    //     <li>Last name: {datas.last_name}</li>
-    //   </ul>
-    //   <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-    //   <div>
-    //   <button onClick={() => onChooseVideo(datas.video_url)}>
-    //     Play Video
-    //   </button></div>
-    //   <div>
-    //   <button>More Info</button></div>
-    //   </div>
-    //   </div>
-    // </div> */}
   );
 }
 
-export default OneCard;
+export default FavoriteCard;
 
-// import React from 'react'
-// import {Link} from 'react-router-dom'
-
-// // import 'bootstrap/dist/css/bootstrap.min.css';
-
-// const Card = ()=>{
-
-//    return (
-//       <div>
-
-//       </div>)
-
-//     return (
-//     <div>
-//  <div class="card" style={{width: '140%'}}>
-//         <div class="row no-gutters">
-//             <div class="col-auto">
-//                 <img src="//placehold.it/200" class="img-fluid" alt=""/>
-//             </div>
-//             <div class="col">
-//                 <div class="card-block px-2">
-//                     <h4 class="card-title">User-Name</h4>
-//                     <p class="card-text">Description/Motto/Tweet of the day</p>
-//                     <ol>
-//                     <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-//                         <li>hallo</li>
-
-//                     </ol>
-//                     <Link to="/usermessages" class="btn btn-primary">See all messages of</Link>
-//                 </div>
-//             </div>
-//         </div>
-//         <div class="card-footer w-100 text-muted">
-//             I love chickens...
-//         </div>
-//   </div>
-//     </div>
-//     )
-
-// }

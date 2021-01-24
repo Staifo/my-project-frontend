@@ -61,7 +61,7 @@ function TestCard({
   onChoosePersonalSpace,
   userCard,
   handleClick,
-  item
+  item,
 }) {
   console.log(data);
   const classes = useStyles();

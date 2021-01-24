@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
-const ExtractData = ({ datas, data, onChooseVideo, handleClick, handleFav }) => {
+const ExtractData = ({ datas, data, onChooseVideo, handleClick, handleFav, like, handleFavorite, handleFavoriteNew, }) => {
   console.log(datas)
   
   return (
@@ -18,7 +18,7 @@ const ExtractData = ({ datas, data, onChooseVideo, handleClick, handleFav }) => 
             return (
              
               
-                    <OneCard data={data} onChooseVideo={onChooseVideo} handleClick={handleClick} handleFav={handleFav}/>
+                    <OneCard data={data} onChooseVideo={onChooseVideo} handleClick={handleClick} handleFav={handleFav} like={like} handleFavorite={handleFavorite} handleFavoriteNew={handleFavoriteNew}/>
                   
             );
           })}

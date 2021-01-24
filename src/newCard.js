@@ -101,7 +101,7 @@ function NewCard({
     <div
       class="col-sm-4"
       className="cardSpace"
-      style={{ display: "flex", width: "100%",}}
+      style={{ display: "flex", width: "100%", justifyContent: 'center', alignItems: 'center'}} 
     >
       <div style={{ width: "98%" }}>
         <Card
@@ -111,6 +111,7 @@ function NewCard({
             marginLeft: "",
             flex: "1",
             position: 'sticky',
+            top: '0'
           }}
         >
           <CardMedia
