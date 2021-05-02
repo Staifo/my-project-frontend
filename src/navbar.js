@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "@material-ui/core/Button";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -8,9 +8,13 @@ import Searchbar from "./searchbar";
 import { Link } from "react-router-dom";
 import logo4 from "./images/logo4.png";
 import { useHistory } from "react-router-dom";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import IconButton from "@material-ui/core/IconButton";
 
-const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
+const Navbar = ({ handleChange, key, handleOnClick, userInput, search, datas, like, setLike, data,  }) => {
+
   const history = useHistory();
+  const [click, setClick] = useState(null)
 
   const handleClick = () => {
     if (search) {
@@ -27,7 +31,11 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
     
   }
    }
-  
+
+   const handleLikeClick=((e)=> {
+setClick(e.target);
+   })
+
 
   return (
     <div
@@ -40,7 +48,7 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
     >
       <Link to="/" style={{ textDecoration: "none" }}>
         <div onClick={handleClick} style={{ marginTop: "2%" }}>
-          <img src={logo4} width="120px" />
+          <img src={logo4} width="120px"/>
         </div>
       </Link>
       <Link
@@ -48,7 +56,7 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
         to="/"
         style={{ textDecoration: "none", color: "black" }}
       >
-        <div
+        <div className='juniorCoder'
           style={{
             fontSize: "80px",
             fontFamily: "Impact",
@@ -76,6 +84,12 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
             userInput={userInput}
           />
         </div>
+        {/* {like && (<IconButton
+                        aria-label="add to favorites"
+                        style={{color: 'grey'}}
+                      >
+                        <FavoriteIcon onClick={handleLikeClick}/>
+                      </IconButton>)} */}
         <div
           style={{
             display: "flex",
@@ -134,22 +148,30 @@ const Navbar = ({ handleChange, key, handleOnClick, userInput, search }) => {
           marginRight: "40px",
         }}
       >
+      <a href='https://www.linkedin.com/in/istayfo-ergun-a606a564/' target = 'blanc' style={{textDecoration: 'none'}}>
         <LinkedInIcon
+        className='icons'
           style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
           color="primary"
         />
+        </a>
         <FacebookIcon
+        className='icons'
           style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
           color="primary"
         />
         <TwitterIcon
+        className='icons'
           style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
           color="primary"
         />
+        <a href='https://github.com/Staifo' target = 'blanc' style={{textDecoration: 'none'}}>
         <GitHubIcon
+        className='icons'
           style={{ marginRight: "2%", marginTop: "1.6%", marginBottom: "1%" }}
           color="primary"
         />
+        </a>
       </div>
     </div>
   );

@@ -31,10 +31,10 @@ const Login = () => {
             marginTop: '140px'
           }}
         >
-          <span className="nice">Welcome!</span>
+          <span className="nice">Welcome</span>
           <span className="nice">get your</span>
           <span className="nice">junior</span>
-          <span className="nice">Coder</span>
+          <span className="nice">coder</span>
         </div>
         {/* <div style={{display: 'flex', width: '100%', border: '2px solid green', width: 'min-content' , position: 'relative', left: '60%'}}> */}
         {/* <div style={{width: '200px', position: 'absolute', left: '24%', bottom:'30%',}}><img src={logo1} width = '600px'/></div> */}

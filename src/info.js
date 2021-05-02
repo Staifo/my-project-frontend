@@ -108,18 +108,17 @@ const Info = () => {
                   <div>First Name</div>
                   <input type="text" name="first_name" />
 
-                  <div>Phone</div>
-                  <input type="tel" name="phone" />
-
                   <div>Last Name</div>
                   <input type="text" name="last_name" />
+
+                  <div>Phone</div>
+                  <input type="tel" name="phone" />
 
                   <div>Date of Birth</div>
                   <input
                     name="dob"
                     type="date"
                     id="birthday"
-                    value='01.10.2020'
                     style={{ width: "100%" }}
                   />
 

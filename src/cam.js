@@ -10,6 +10,7 @@ const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
   const mediaRecorderRef = React.useRef(null);
   const [capturing, setCapturing] = React.useState(false);
   const [recordedChunks, setRecordedChunks] = React.useState([]);
+  const [cancel, setCancel]=useState(null);
 
   const handleStartCaptureClick = React.useCallback(() => {
     setCapturing(true);
@@ -57,6 +58,11 @@ const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
     }
   }, [recordedChunks]);
 
+  const handleCancel = (e) => {
+setCancel(e.target);
+setRecordedChunks([]);
+  }
+
   return (
     <form
     
@@ -77,7 +83,7 @@ const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
           </li>
           <li>Click on 'Stop Capture' to stop recording</li>
           <li>Click on 'Upload'. Done!</li>
-          <li>If you are not happy, just repress 'Start Capture' before 'Upload' and try again.</li>
+          <li>If you are not happy, just press 'I Don't like...I try it again' before 'Upload' and try again.</li>
         </ol>
       </div>
       <Webcam audio={true} ref={webcamRef} name="video" />
@@ -91,9 +97,11 @@ const WebcamStreamCapture = ({ userId, setVideoUploaded }) => {
         </Button>
       )}
       {recordedChunks.length > 0 && (
-        <Button color="primary" onClick={handleDownload}>
+        <div style={{display: 'flex', flexDirection: 'column'}}><Button color="primary" onClick={handleDownload}>
           Upload
         </Button>
+        <Button color="primary" onClick={handleCancel}>I Don't like...I try it again</Button>
+        </div>
       )}
     </form>
   );

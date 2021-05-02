@@ -65,10 +65,19 @@
     width: 100%;
   }
 
+}
+
+@media (max-width: 1000px) {
   .searchbar {
     flex-direction: column;
+   
   }
+.search {
+  min-width: 74%;
 }
+}
+
+
 
 @media (max-width: 1023px) {
   .cardSpace {
@@ -86,7 +95,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1441px) {
   .cardSpace {
     margin-top: 10px;
     margin-left: 10px;
@@ -94,7 +103,7 @@
   }
 
   .table {
-    height: 120px;
+    height: max-content;
   }
 }
 
@@ -240,4 +249,190 @@ body {
 
   }
 
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(220, 243, 250);
+  position: relative;
+  animation-name: example;
+  animation-iteration-count:infinite;
+  animation-duration: 7.6s;
+
+
+  /* margin-left: 36% */
+}
+
+@keyframes example {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px; }
+  50%  {background-color:rgb(173, 216, 230, 0.2); left:80%; top:0px;}
+  100%  {background-color:lightgrey; left:0px; top:0px;}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+.C {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(220, 243, 250);
+  position: relative;
+  animation-name: c;
+  animation-iteration-count:infinite;
+  animation-duration: 7.8s;
+}
+
+@keyframes c {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px;transform: rotate(0deg);}
+  50%  {background-color:rgb(173, 216, 230, 0.2); left:80%; top:0px;transform: rotate(360deg);}
+  100%  {background-color:lightgrey; left:0px; top:0px;transform: rotate(-360deg);}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+.O {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(220, 243, 250);
+  position: relative;
+  animation-name: o;
+  animation-iteration-count:infinite;
+  animation-duration: 7.9s;
+}
+
+@keyframes o {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px;transform: rotate(0deg);}
+  50%  {background-color:rgb(173, 216, 230, 0.2); left:80%; top:0px; transform: rotate(360deg)}
+  100%  {background-color:lightgrey; left:0px; top:0px;transform: rotate(-360deg)}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+
+.D {
+  width: 50px;
+  height: 50px;
+  background-color:rgb(220, 243, 250);
+  position: relative;
+  animation-name: d;
+  animation-iteration-count:infinite;
+  animation-duration: 8s;
+}
+
+@keyframes d {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px;transform: rotate(0deg);}
+  50%  {background-color: rgb(173, 216, 230, 0.2); left:80%; top:0px; transform: rotate(360deg)}
+  100%  {background-color:lightgrey; left:0px; top:0px;transform: rotate(-360deg)}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+.E {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(220, 243, 250);
+  position: relative;
+  animation-name: e;
+  animation-iteration-count:infinite;
+  animation-duration: 8.1s;
+}
+
+@keyframes e {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px;transform: rotate(0deg);}
+  50%  {background-color:rgb(173, 216, 230, 0.2); left:80%; top:0px; transform: rotate(360deg)}
+  100%  {background-color:lightgrey; left:0px; top:0px;transform: rotate(-360deg)}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+.R {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(220, 243, 250);
+  position: relative;
+  animation-name: r;
+  animation-iteration-count:infinite;
+  animation-duration: 8.2s;
+}
+
+@keyframes r {
+  0%   {background-color:rgb(220, 243, 250); left:0px; top:0px;transform: rotate(0deg);}
+  50%  {background-color:rgb(173, 216, 230, 0.2); left:80%; top:0px; transform: rotate(360deg)}
+  100%  {background-color:lightgrey; left:0px; top:0px;transform: rotate(-360deg)}
+  /* 75%  {background-color:green; left:0px; top:400px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}
+
+.spinnerDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-family: Quicksand;
+  font-size: 20px;
+  font-weight: bold; */
+  color: white;
+}
+
+.spinnerDiv {
+  animation-name: spinner;
+  animation-duration: 4s;
+}
+
+@keyframes spinner {
+  0% {visibility: hidden}
+  50% {visibility: hidden};
+  100% {visibility: visible};
+}
+
+
+/* .juniorCoder {
+  text-align: center;
+ 
+
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(
+    to right,
+    rgb(220, 243, 250) 10%,
+    rgb(173, 216, 230, 0.2),
+    rgb(255, 255, 255) 20%,
+    lightgrey 60%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 10s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+} */
+
+.icons:hover {
+  color: white;
+}
+
+
+.loading {
+  position: relative;
+  animation: mymove 16s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+}
+
+@keyframes mymove {
+  from {
+    width:0;
+  }
+  to {
+    width:100%;
+  }
 }

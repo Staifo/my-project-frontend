@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import CardMedia from "@material-ui/core/CardMedia";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -42,6 +43,7 @@ const PersonalSpaceCard = ({ skillDiv }) => {
     coding_skills,
     transfer_skills,
     CV,
+    profile_pic
   } = skillDiv;
 
   return (
@@ -126,11 +128,9 @@ const PersonalSpaceCard = ({ skillDiv }) => {
               height: "100%",
             }}
           >
-            <div ref={pdf} style={{ height: "100%"}}>
-            
-            
+            {/* <div ref={pdf} style={{ height: "100%", width: "100%"}}> */}
               <PDF CV={CV}/>
-            </div>
+            {/* </div> */}
           </Paper>
         </Grid>
       </Grid>

@@ -63,7 +63,8 @@ function OneCard({
   userCard,
   handleClick,
   handleFav,
-
+ 
+ 
 })
 
 {
@@ -73,10 +74,14 @@ function OneCard({
   const [like, setLike] =useState(null);
   const history = useHistory();
   const favorite = useRef(null);
-  console.log(like);
+  // const [testIt, setTestIt]=useState([])
+  // const button=useRef(null)
+  // const [status, setStatus]=useState(null)
+  // console.log(like);
 
 
-  const favCard = [];
+
+
 
 
   const handleExpandClick = () => {
@@ -88,9 +93,13 @@ function OneCard({
     window.location.reload();
   };
 
+
+ 
+
   const handleFavorite = (e) => {
     setLike(e.target);
     favorite.current.style.color = 'red';
+    // testIt.push(<OneCard data={data}/>)
   
   }
   
@@ -98,6 +107,7 @@ function OneCard({
     setLike(null)
     // history.push(`/singleUser/${_id}`);
   }
+
 
 
 
@@ -118,17 +128,20 @@ function OneCard({
     profile_pic,
     linkedin_url,
     github_url,
+    portfolio_url
   } = data;
 
   console.log(data);
 
-
+ 
+  
 
   //   import { eoLocale } from 'date-fns/locale/eo'
   // var result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
   //   locale: eoLocale
 
   return (
+
     <div
       class="col-sm-4"
       className="cardSpace"
@@ -143,7 +156,6 @@ function OneCard({
               : process.env.REACT_APP_LOCAL
           }/documents/${data.profile_pic}`}
         />
-
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             <table
@@ -179,6 +191,7 @@ function OneCard({
                         ref={favorite}/>
                       </IconButton>
                     </span>}
+                    {/* { like && <div style={{width: '100%',}}> <div style={{}}><OneCard data={data}/></div></div>} */}
                     {like && <span style={{}}>
                       <IconButton
                         aria-label="add to favorites"
@@ -283,7 +296,6 @@ function OneCard({
               >
                 Play Video
               </Button>
-              {/* <Link to={`/singleUser/${_id}`} style={{ textDecoration: "none" }}> */}
               <Button
                 variant="contained"
                 color="primary"
@@ -293,7 +305,6 @@ function OneCard({
                 More Info
               </Button>
             </div>
-            {/* </Link> */}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -326,8 +337,9 @@ function OneCard({
               />
             </Typography>
             <Typography paragraph style={{}}>
-              <a href={linkedin_url}>
+              <a href={linkedin_url} target='_blanc'>
                 <LinkedInIcon
+                className='linkedin'
                   style={{
                     marginRight: "2%",
                     marginTop: "1%",
@@ -338,7 +350,7 @@ function OneCard({
               </a>
             </Typography>
             <Typography paragraph>
-              <a href={github_url}>
+              <a href={github_url} target='_blanc'>
                 <GitHubIcon
                   color="primary"
                   style={{
@@ -347,6 +359,21 @@ function OneCard({
                     marginBottom: "1%",
                   }}
                 />
+              </a>
+            </Typography>
+            <Typography paragraph>
+              <a href={portfolio_url} target='_blanc' style={{textDecoration: 'none'}}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  size='small'
+                  style={{
+                    // marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                    fontSize: '10px'
+                  }}
+                >Portfolio</Button>
               </a>
             </Typography>
             {/* <IconButton aria-label="add to favorites" onClick={handleClick}>
@@ -418,6 +445,12 @@ function OneCard({
           </CardContent>
         </Collapse> */}
       </Card>
+      {/* <button style={{width: '100px', height:'100px',backgroundColor: 'grey'}}ref={button} onClick={() => {setStatus(!status);
+      if(status){
+        status ? button.current.style.backgroundColor = 'red' : button.current.style.backgroundColor = 'grey'
+      }}}>
+      
+    </button> */}
     </div>
 
     // {/* <div

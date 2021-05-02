@@ -94,7 +94,9 @@ function NewCard({
     country,
     email,
     linkedin_url,
-    github_url
+    github_url,
+    phone,
+    portfolio_url
   } = userCard;
 
   return (
@@ -224,6 +226,21 @@ function NewCard({
                   }}
                 /></a>
               </Typography>
+              <Typography paragraph>
+              <a href={portfolio_url} target='_blanc' style={{textDecoration: 'none'}}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  size='small'
+                  style={{
+                    // marginRight: "2%",
+                    marginTop: "1%",
+                    marginBottom: "1%",
+                    fontSize: '10px'
+                  }}
+                >Portfolio</Button>
+              </a>
+            </Typography>
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
@@ -285,7 +302,7 @@ function NewCard({
                         <td>
                           <MobileFriendlyIcon color="primary" />
                         </td>
-                        <td>0158 / 20 20 20 20</td>
+                        <td>{phone}</td>
                       </tr>
                       <tr>
                         <td>

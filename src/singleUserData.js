@@ -1,13 +1,28 @@
-import React from 'react'
+// import React from 'react'
+// import Test from './testing'
 
 
-const singleUserData = ({datas}) => {
+// const SingleUserData = ({datas, likeit, setLikeIt, handleFavorite, onChooseVideo}) => {
 
     
-    return (
-        <div>
+//     return (
+//         <div class="container" className="box">
+//         <div class="row">
+//           {datas &&
+//             datas.map((datas) => {
+//               return (
+//                 <Test
+//                   datas={datas}
+//                   onChooseVideo={onChooseVideo}
+//                   likeit={likeit}
+//                   setLikeIt={setLikeIt}
+//                   handleFavorite={handleFavorite}
+//                 />
+//               );
+//             })}
+//         </div>
+//       </div>
+//     );
+// }
 
-        </div>)
-}
-
-export default singleUserData
+// export default SingleUserData

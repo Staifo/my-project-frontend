@@ -42,6 +42,8 @@ import NewCard from "./newCard";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { useHistory } from "react-router-dom";
 import TestCard from "./testCard";
+import Spinner from './spinner';
+import AboutThisProject from './aboutThisProject';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App({item}) {
+function App() {
   const [datas, setDatas] = useState(null);
   const [data, setData] = useState(null);
   const [chosenVideo, setChosenVideo] = useState(null);
@@ -79,7 +81,7 @@ function App({item}) {
   const [createCard, setCreateCard] = useState(null);
   const [search, setSearch] = useState(null);
   const [userInput, setUserInput] = useState(null);
-  
+  // const [like, setLike]=useState(null);
 
   const history = useHistory();
   const { id } = useParams();
@@ -110,30 +112,25 @@ function App({item}) {
   const cam = useRef();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  // const [like, setLike]=useState(null)
 
   // const favoriteCards = [];
   // console.log(favoriteCards)
- 
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  
 
   const handleClick = (e) => {
     e.preventDefault();
     setCreateCard(e.target);
   };
 
-  
-
+ 
   // const handleFav = (e) => {
   //  setFav(e);
   //  setFav(datas[0]._id)
   // }
-
 
   // const favo = fav && datas.filter(item=>{favoriteCards.push( <TestCard
   //   item={item}
@@ -143,13 +140,18 @@ function App({item}) {
   // />
   //     )})
 
-  
+  // const handleFavorite = (e) => {
+  //   setLike(e.target);
+    
+  // }
+  console.log(data)
 
-  const handleFav = (e) => {
-    setFav(e.target);
-      
-  };
-  console.log(fav);
+
+  // const handleFav = (e) => {
+  //   setFav(e.target);
+
+  // };
+  // console.log(fav);
 
 
   useEffect(() => {
@@ -158,7 +160,7 @@ function App({item}) {
       .then((database) => setDatas(database));
   }, []);
 
- 
+
   return (
     <div style={{ width: "100%" }}>
       <Navbar
@@ -166,16 +168,20 @@ function App({item}) {
         handleOnClick={handleOnClick}
         userInput={userInput}
         search={search}
+        // like={like}
+        // setLike={setLike}
+        datas={datas}
       />
 
       <div
         className="App"
         style={{ height: "100%", width: "100%", display: "flex" }}
       >
+        {!datas && <Spinner/>}
         <Switch>
           <Route exact path="/">
             <div
-            ref={video} 
+              ref={video}
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -187,9 +193,8 @@ function App({item}) {
                 zIndex: "10",
               }}
             >
-              {datas && <Video url={chosenVideo}/>}
+              {datas && <Video url={chosenVideo} />}
               
-                          {/* {favoriteCards} */}
             </div>
             <div>
               <div style={{ width: "100%", zIndex: "0" }}>
@@ -199,7 +204,11 @@ function App({item}) {
                     onChooseVideo={setChosenVideo}
                     url={chosenVideo}
                     handleClick={handleClick}
-                    handleFav={handleFav} 
+                    // handleFav={handleFav}
+                    // handleFavorite={handleFavorite}
+                    data={data}
+                    // like={like}
+                    // setLike={setLike}
                   />
                 )}
               </div>
@@ -232,8 +241,9 @@ function App({item}) {
               </div>
             </div>
           </Route>
-      <Route path="/singleUser/:id?/">
-            <div className='cardVidDivFirstApp'
+          <Route path="/singleUser/:id?/">
+            <div
+              className="cardVidDivFirstApp"
               style={{
                 whiteSpace: "nowrap",
                 marginRight: "1%",
@@ -241,7 +251,10 @@ function App({item}) {
                 width: "max-content",
               }}
             >
-              <div className = 'cardVidDiv' style={{ width: "100%", position: "sticky", top: "0",}}>
+              <div
+                className="cardVidDiv"
+                style={{ width: "100%", position: "sticky", top: "0" }}
+              >
                 <MyPersonalSpace
                   datas={datas}
                   onChooseVideo={setChosenVideo}
@@ -293,6 +306,9 @@ function App({item}) {
           <Route path="/info">
             <Info />
           </Route>
+          <Route path='/aboutthisproject'>
+          <AboutThisProject/>
+          </Route>
         </Switch>
       </div>
       {/* { datas && datas
@@ -331,7 +347,7 @@ function App({item}) {
             </div>
                 </Route>
                 </Switch>
-                </div>
+                </div
                
                 )
                 

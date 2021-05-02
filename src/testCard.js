@@ -93,7 +93,7 @@ function TestCard({
     github_url,
   } = item;
 
-  console.log(data);
+  console.log(item);
 
   //   import { eoLocale } from 'date-fns/locale/eo'
   // var result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
